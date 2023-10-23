@@ -1,4 +1,4 @@
-# DIT952-lab1
-Laboration 1 till Objekt-orienterad Programmering och Design 2019 (DIT953).
+# oopd-gu-chalmers Lab 1
+Lab assignment 1 in the course Object-oriented Programming and Design, GU/Chalmers
 
-Se Canvas för instruktioner.
+See Canvas for instructions.
