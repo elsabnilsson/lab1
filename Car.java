@@ -37,19 +37,11 @@ public void move() {
 public void turnLeft() {
     switch (direction) {
         case "N" -> direction = "W";
-        case "W" -> direction = "S";
-        case "S" -> direction = "E";
         case "E" -> direction = "N";
     }
 }
 
 public void turnRight() {
-    switch (direction) {
-        case "N" -> direction = "E";
-        case "E" -> direction = "S";
-        case "S" -> direction = "W";
-        case "W" -> direction = "N";
-    }
 }
 
 public double getEnginePower() { return enginePower; }
