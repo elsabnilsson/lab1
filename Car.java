@@ -89,7 +89,7 @@ public abstract class Car implements Movable{
         else
             incrementSpeed(amount);
     }
-    
+
     // Makes the car go slower
     public void brake(double amount){
         if (amount < 0 || amount > 1){
