@@ -16,14 +16,14 @@ public class CarTest {
         Car Saab95 = new Saab95();
         Saab95.startEngine();
         Saab95.move();
-        assertEquals(0.1, Saab95.ypos);
+        assertEquals(0.1, Saab95.getYpos());
     }
 
     @Test
     void turnLeft() {
         Car Volvo240 = new Volvo240();
         Volvo240.turnLeft();
-        assertEquals(3, Volvo240.direction);
+        assertEquals(3, Volvo240.getDirection());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class CarTest {
         Car Saab95 = new Saab95();
         Saab95.turnRight();
         Saab95.turnRight();
-        assertEquals(2, Saab95.direction);
+        assertEquals(2, Saab95.getDirection());
     }
 
     // Tests that getEnginePower returns the correct value
@@ -117,7 +117,7 @@ public class CarTest {
         Car saab95 = new Saab95();
         saab95.startEngine();
         saab95.incrementSpeed(100);
-        assertEquals(saab95.enginePower, saab95.getCurrentSpeed());
+        assertEquals(saab95.getEnginePower(), saab95.getCurrentSpeed());
     }
 
     // Tests that decrementSpeed works
