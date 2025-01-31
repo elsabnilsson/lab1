@@ -23,7 +23,7 @@ public class CarTest {
     void turnLeft() {
         Car Volvo240 = new Volvo240();
         Volvo240.turnLeft();
-        assertEquals("W", Volvo240.direction);
+        assertEquals(3, Volvo240.direction);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class CarTest {
         Car Saab95 = new Saab95();
         Saab95.turnRight();
         Saab95.turnRight();
-        assertEquals("S", Saab95.direction);
+        assertEquals(2, Saab95.direction);
     }
 
     // Tests that getEnginePower returns the correct value
