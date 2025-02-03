@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.Csv;
 
 import java.awt.*;
 
@@ -170,6 +171,104 @@ public class CarTest {
         saab95.gas(1);
         saab95.brake(0.1);
         assertEquals(1.225, saab95.getCurrentSpeed());
+    }
+
+    @Test
+    void raiseBed() {
+        Scania scania = new Scania();
+        scania.raiseBed(10);
+        assertEquals(10, scania.getAngle());
+    }
+
+    @Test
+    void gasScania() {
+        Scania scania = new Scania();
+        scania.raiseBed(10);
+        scania.startEngine();
+        assertEquals(0, scania.getCurrentSpeed());
+    }
+
+    @Test
+    void transportCar() {
+        CarTransport carTransport = new CarTransport(1);
+        carTransport.raiseBed();
+        assertEquals(true, carTransport.isRampDown());
+    }
+
+    // Tries to pick up a car that's too far away from the carTransport
+    @Test
+    void pickUpCar() {
+        CarTransport carTransport = new CarTransport(1);
+        Car volvo240 = new Volvo240();
+        volvo240.setPosition(2,3);
+        carTransport.raiseBed();
+        carTransport.loadCar(volvo240);
+        assertEquals(volvo240, carTransport.getLoadedCars().peek());
+    }
+
+    // Test to make sure carTransport can't start with ramp down
+    @Test
+    void cantStartEngineWithRampUp() {
+        CarTransport carTransport = new CarTransport(1);
+        carTransport.raiseBed();
+        carTransport.startEngine();
+        assertEquals(true, carTransport.isRampDown());
+    }
+
+    // Test to make sure loaded cars move with the carTransport
+    @Test
+    void carsMovingWithCarTransport() {
+        CarTransport carTransport = new CarTransport(1);
+        carTransport.raiseBed();
+        Car volvo240 = new Volvo240();
+        carTransport.loadCar(volvo240);
+        carTransport.lowerBed();
+        carTransport.startEngine();
+        carTransport.gas(0.5);
+        carTransport.turnRight();
+        carTransport.move();
+        assertEquals(4.1, volvo240.getXpos());
+    }
+
+    // Test to make sure the cars position after transport is correct in
+    // relation to the carTransports position.
+    @Test
+    void unload() {
+        CarTransport carTransport = new CarTransport(1);
+        carTransport.setPosition(0,0);
+        carTransport.raiseBed();
+        Car volvo240 = new Volvo240();
+        carTransport.loadCar(volvo240);
+        carTransport.unloadCar();
+        assertEquals(5, volvo240.getXpos());
+    }
+
+    @Test
+    void testWorkshop() {
+        Workshop<Car> workshop = new Workshop<>(2);
+        Car volvo240 = new Volvo240();
+        Car saab95 = new Saab95();
+        workshop.addCar(volvo240);
+        workshop.addCar(saab95);
+        assertEquals(2, workshop.getNrOfCars());
+    }
+
+    @Test
+    void saabShop() {
+        Workshop<Saab95> workshop = new Workshop<>(5);
+        Saab95 saab95 = new Saab95();
+        workshop.addCar(saab95);
+        assertEquals(1, workshop.getNrOfCars());
+    }
+
+    @Test
+    void removeCar() {
+        Workshop<Volvo240> workshop = new Workshop<>(2);
+        Volvo240 volvo240 = new Volvo240();
+        Saab95 saab95 = new Saab95();
+        workshop.addCar(volvo240);
+        workshop.removeCar(saab95);
+        assertEquals(1, workshop.getNrOfCars());
     }
 
 

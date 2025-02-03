@@ -10,7 +10,7 @@ public abstract class Car implements Movable{
     private double ypos;
     private int direction;
 
-    public Car(int nrDoors, Color color, double enginePower, String modelName, int xpos, int ypos, int direction){
+    public Car(int nrDoors, Color color, double enginePower, String modelName, int xpos, int ypos, int direction, double carLength){
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -18,9 +18,12 @@ public abstract class Car implements Movable{
         this.xpos = 0;
         this.ypos = 0;
         this.direction = 0;
+        this.carLength = carLength;
         stopEngine();
     }
 
+
+    public double getCarLength() { return carLength; }
 
     public int getNrDoors(){
         return nrDoors;
@@ -30,6 +33,10 @@ public abstract class Car implements Movable{
     public double getYpos() { return ypos; }
     public int getDirection() { return direction; }
 
+    public void setPosition(double x, double y){
+        xpos = x;
+        ypos = y;
+    }
 
     // Makes car move in the direction it is facing (task 2)
     public void move(){
