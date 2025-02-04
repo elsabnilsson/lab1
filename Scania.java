@@ -10,10 +10,12 @@ public class Scania extends Car{
         Angle = 0;
     }
 
+    // Returns the angle of the bed
     public double getAngle() {
         return Angle;
     }
 
+    // Sets the angle of the bed
     public void setAngle(double angle) {
         if (angle >= minAngle && angle <= maxAngle) {
             Angle = angle; }
@@ -21,10 +23,12 @@ public class Scania extends Car{
             throw new IllegalArgumentException("Angle must be between 0 and 70"); }
     }
 
+    // Returns if the car is not moving
     public boolean isCarNotMoving() {
         return getCurrentSpeed() == 0;
     }
 
+    // Raises the bed of the Scania
     public void raiseBed(double amount) {
         if (isCarNotMoving()) {
             Angle = Math.min(Angle + amount, maxAngle); }
@@ -32,19 +36,33 @@ public class Scania extends Car{
             throw new IllegalArgumentException("Can't raise bed while moving"); }
     }
 
+    // Lowers the bed of the Scania
     public void lowerBed(double amount) {
         Angle = Math.max(Angle - amount, minAngle);
     }
 
+    // Returns speed factor of Scania
     protected double speedFactor() {
         return getEnginePower() * 0.01; }
 
-    @Override
+
+    /*@Override
     public void startEngine() {
         if (Angle == 0) {
             super.startEngine(); }
         else {
             throw new IllegalArgumentException("Can't start engine while bed is raised");
         }
+    }*/
+
+    protected boolean canStart() {
+        if (Angle == 0) {
+            return true;
+        }
+        else {
+            throw new IllegalArgumentException("Can't start engine while bed is raised");
+
+        }
     }
+
 }

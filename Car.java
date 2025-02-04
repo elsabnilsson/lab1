@@ -23,7 +23,6 @@ public abstract class Car implements Movable{
         stopEngine();
     }
 
-
     public double getCarLength() { return carLength; }
 
     public int getNrDoors(){
@@ -39,15 +38,17 @@ public abstract class Car implements Movable{
         ypos = y;
     }
 
+
     // Makes car move in the direction it is facing (task 2)
     public void move(){
-        switch (direction){
-            case 0 -> ypos += currentSpeed;
-            case 1 -> xpos += currentSpeed;
-            case 2 -> ypos -= currentSpeed;
-            case 3 -> xpos -= currentSpeed;
-        }
+            switch (direction){
+                case 0 -> ypos += currentSpeed;
+                case 1 -> xpos += currentSpeed;
+                case 2 -> ypos -= currentSpeed;
+                case 3 -> xpos -= currentSpeed;
+            }
     }
+
 
     // Makes car turn left (task 2)
     public void turnLeft(){
@@ -59,6 +60,8 @@ public abstract class Car implements Movable{
         direction = (direction + 1) % 4;
     }
 
+    abstract boolean canStart();
+
     public double getEnginePower() { return enginePower; }
 
     public double getCurrentSpeed() { return currentSpeed; }
@@ -68,7 +71,8 @@ public abstract class Car implements Movable{
     public void setColor(Color clr) { color = clr; }
 
     // Starts the engine
-    public void startEngine() { currentSpeed = 0.1; }
+    public void startEngine() {
+        if (canStart()) { currentSpeed = 0.1; }}
 
     // Stops the engine
     public void stopEngine() { currentSpeed = 0; }
