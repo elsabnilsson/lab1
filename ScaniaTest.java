@@ -7,7 +7,25 @@ class ScaniaTest {
     void raiseBed() {
         Scania scania = new Scania();
         scania.raiseBed(10);
-        assertEquals(10, scania.getAngle());
+        assertEquals(10, scania.getBed().getAngle());
+    }
+
+    @Test
+    void bedDown() {
+        Scania scania = new Scania();
+        scania.raiseBed(10);
+        scania.lowerBed(10);
+        assertTrue(scania.getBed().isBedDown());
+    }
+
+    @Test
+    void startEngine() {
+        Scania scania = new Scania();
+        scania.raiseBed(10);
+        scania.lowerBed(10);
+        scania.startEngine();
+        assertEquals(0.1, scania.getCurrentSpeed());
+
     }
 
 

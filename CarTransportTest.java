@@ -7,7 +7,7 @@ class CarTransportTest {
     void transportCar() {
         CarTransport carTransport = new CarTransport(1);
         carTransport.open();
-        assertTrue(carTransport.isRampDown());
+        assertEquals(70, carTransport.getRamp().getAngle());
     }
 
     // Tries to pick up a car that's too far away from the carTransport
@@ -18,7 +18,7 @@ class CarTransportTest {
         volvo240.setPosition(2,3);
         carTransport.open();
         carTransport.load(volvo240);
-        assertEquals(volvo240, carTransport.getLoadedCars().peek());
+        assertTrue(carTransport.containsCar(volvo240));
     }
 
     // Test to make sure loaded cars move with the carTransport

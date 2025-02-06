@@ -127,7 +127,8 @@ public class CarTest {
         Volvo240 volvo240 = new Volvo240();
         volvo240.startEngine();
         volvo240.decrementSpeed(0.01);
-        assertEquals(0.08750000000000001, volvo240.getCurrentSpeed());
+        double delta = 0.0001;
+        assertEquals(0.0875, volvo240.getCurrentSpeed(), delta);
     }
 
     // Tests that currentSpeed can't be below zero

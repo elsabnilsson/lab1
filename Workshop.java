@@ -1,12 +1,12 @@
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Workshop<T extends Car> implements Loading<T>{
-    private ArrayList<T> carsInShop;
-    private int maxCars;
+    private final List<T> carsInShop;
+    private final int maxCars;
     private boolean doorOpen;
-    private double Xpos;
-    private double Ypos;
+    private final double Xpos;
+    private final double Ypos;
     private final double loadingDistance = 5.0;
 
 
@@ -32,18 +32,14 @@ public class Workshop<T extends Car> implements Loading<T>{
     // Closes the door to the workshop
     public void close() { doorOpen = false; }
 
-    public boolean isDoorOpen() { return doorOpen; }
-
     // checks how far the car is from the workshops door
     public double distToObject(T car) {
         return Math.sqrt(Math.pow(getXpos() - car.getXpos(), 2) + Math.pow(getYpos() - car.getYpos(), 2));
     }
 
-    // returns a list of all the cars in the workshop
-    public ArrayList<T> listCars() {
-        return new ArrayList<>(carsInShop);
+    public boolean isCarInShop(T car) {
+        return carsInShop.contains(car);
     }
-
 
     // loads a car into the workshop
     public void load(T car) {

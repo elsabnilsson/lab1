@@ -55,6 +55,5 @@ class WorkshopTest {
         workshop.close();
         workshop.open();
         workshop.unload(volvo240);
-        assertTrue(workshop.listCars().contains(volvo241));
-    }
+        assertTrue(workshop.isCarInShop(volvo241)); }
 }
