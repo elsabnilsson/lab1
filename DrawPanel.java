@@ -2,25 +2,54 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
+    //ArrayList<BufferedImage> carImages = new ArrayList<>();
+   // ArrayList<Point> carPoints = new ArrayList<>();
 
+    static Point[] points = new Point[] {new Point(0, 100), new Point(300,0), new Point(0, 200), new Point(300, 300)};
+    BufferedImage[] images = new BufferedImage[4];
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    // To keep track of a single car's position
-    Point volvoPoint = new Point();
 
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
+/*    BufferedImage saabImage;
+    BufferedImage volvoImage;
+    BufferedImage scaniaImage;
+
+    // To keep track of a single car's position
+
+    Point saabPoint = new Point(0, 100);
+    Point volvoPoint = new Point(300,0);
+    Point scaniaPoint = new Point(0, 200);*/
+
+    //BufferedImage volvoWorkshopImage;
+    //Point volvoWorkshopPoint = new Point(300,300);
+
+   /* public void addCarImage(BufferedImage...carImages){
+        for (BufferedImage carImage : carImages) {
+            this.carImages.add(carImage);
+        }
+    }
+
+    public void addCarPoint(Point...carPoints){
+        for (Point carPoint : carPoints) {
+            this.carPoints.add(carPoint);
+        }
+    }*/
+
+
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
+    void moveit(int i, int x, int y){
+
+        points[i].x = x;
+        points[i].y = y;
     }
 
     // Initializes the panel and reads the images
@@ -50,7 +79,21 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        for (int i = 0; i < images.length; i++) {
+            g.drawImage(images[i], points[i].x, points[i].y, null);
+        }
+        for (int i = 0; i < images.length; i++) {
+            System.out.println("Drawing car " + i + " at: " + points[i]);
+            g.drawImage(images[i], points[i].x, points[i].y, null);
+        }
+        /*
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
+        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);*/
+        //g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+    }
+
+    public static int[] getCoords(int i) {
+        return new int[]{points[i].x, points[i].y};
     }
 }

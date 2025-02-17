@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    // ArrayList<ACar> cars = new ArrayList<>();
+    ArrayList<Car> cars = new ArrayList<>();
+    Workshop<Volvo240> volvoWorkshop = new Workshop<>(10, 300, 300);
 
     //methods:
 
@@ -29,7 +31,15 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        // cc.cars.add(new Volvo240());
+        cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
+        cc.cars.add(new Scania());
+
+        cc.cars.get(0).setPosition(300,0);
+        cc.cars.get(1).setPosition(300,100);
+        cc.cars.get(2).setPosition(0,200);
+
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -43,14 +53,38 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
- /*           for (ACar car : cars) {
+            for (int i = 0; i < cars.size(); i++) {
+                Car car = cars.get(i);
                 car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
+
+                if (car.getYpos() > 500 || car.getYpos() < 0) {
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                if (car.getXpos() > 700 || car.getXpos() < 0) {
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+
+                int workshopX = DrawPanel.getCoords(3)[0];
+                int workshopY = DrawPanel.getCoords(3)[1];
+
+                if(Math.abs(car.getXpos() - workshopX) < 5 && Math.abs(car.getYpos() - workshopY) < 5) {
+                    if(car instanceof Volvo240) {
+                        volvoWorkshop.load((Volvo240) car);
+                        car.setPosition(workshopX, workshopY);
+                        car.stopEngine();
+                    }
+                }
+
+                int x = (int) Math.round(car.getXpos());
+                int y = (int) Math.round(car.getYpos());
+                //frame.drawPanel.moveit(, x, y);
+                frame.drawPanel.moveit(i, x, y);
+                //frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-            }*/
+            }
         }
     }
 
@@ -62,4 +96,57 @@ public class CarController {
             car.gas(gas);
         }*/
     }
+
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
+        }
+    }
+
+    void startCars() {
+        for (Car car : cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopCars() {
+        for (Car car : cars) {
+            car.stopEngine();
+        }
+    }
+
+    void turboOn() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOff();
+            }
+        }
+    }
+
+    void liftBed() {
+        for (Car car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).raiseBed(70);
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Car car : cars) {
+            if (car instanceof Scania) {
+                ((Scania) car).lowerBed(0);
+            }
+        }
+    }
+
+
 }
