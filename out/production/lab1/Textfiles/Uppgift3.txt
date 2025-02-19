@@ -1,0 +1,25 @@
+Vilka ansvarsområden har era klasser?
+- Car: Bygga grunden till en bil
+- CarController: Styr och skapa bilarna i simulationen
+- CarTransport: Bygger en biltransport
+- CarView: Skapar knapparna och funktionerna för simulationen
+- DrawPanel: Målar det grafiska för simulationen
+- Saab95: Bygga en fungerande saab
+- Scania: Bygger en fungerande lastbil
+- TruckBed: Bygger ett lastbilssläp
+- Volvo240: Bygga en fungerande volvo
+- Workshop: Bygger en verkstad
+
+
+Vilka anledningar har de att förändras?
+- Om antal bilar eller vilka sorter vill ändras behövs mycket omskrivning
+- Om olika knappar eller funktioner skall vara med i CarView
+
+
+På vilka klasser skulle ni behöva tillämpa dekomposition för att bättre följa SoC och SRP?
+- CarController och CarView
+- CarController borde inte både skapa och styra bilarna. En klass för varje funktion. Kanske en egen för workshops
+- Timelistner borde vara separat från carcontroller
+- En egen klass för att skapa knappar i simulationen och en för att skapa funktionerna
+- Carviwe och carcontroller är båda beroende av varandra. Carcontroller borde inte vara beroende av carview då den inte vet var bilarna ska vara.
+  Carview behöver veta vad som är i den.

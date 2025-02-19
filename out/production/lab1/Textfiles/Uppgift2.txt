@@ -1,0 +1,14 @@
+Vilka beroenden är nödvändiga?
+- Subklasserna till Car och TruckBed
+- Workshop och CarTransports beroende till car
+- Carcontroller måste kunna skapa bilar och workshops
+
+Vilka klasser är beroende av varandra som inte borde vara det?
+- Carcontroller och carview bör inte vara beroende av varandra
+
+Finns det starkare beroenden än nödvändigt?
+- Carcontroller och carview är starkt beroende av varandra
+- Timelistner kan vara separat från carcontroller
+
+Kan ni identifiera några brott mot övriga designprinciper vi pratat om i kursen?
+- Svårt att bygga på de nya klasserna då dom är mycket hårdkodade (OCP)
