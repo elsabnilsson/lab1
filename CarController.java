@@ -39,8 +39,6 @@ public class CarController {
         cc.cars.get(1).setPosition(300,100);
         cc.cars.get(2).setPosition(0,200);
 
-
-
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -79,10 +77,7 @@ public class CarController {
 
                 int x = (int) Math.round(car.getXpos());
                 int y = (int) Math.round(car.getYpos());
-                //frame.drawPanel.moveit(, x, y);
                 frame.drawPanel.moveit(i, x, y);
-                //frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
         }

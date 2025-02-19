@@ -19,18 +19,15 @@ public class CarView extends JFrame{
 
     // The controller member
     CarController carC;
-    //DrawPanel drawPanel;
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
-    //JSpinner angleSpinner = new JSpinner();
     int gasAmount = 0;
 
     JLabel gasLabel = new JLabel("Amount of gas");
-    //JLabel angleLabel = new JLabel("Amount of angle");
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
@@ -44,7 +41,6 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
-        //drawPanel = dp;
         initComponents(framename);
     }
 
@@ -57,9 +53,6 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-        //this.add(carC);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value

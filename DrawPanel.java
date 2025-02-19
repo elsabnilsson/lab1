@@ -11,38 +11,10 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-    //ArrayList<BufferedImage> carImages = new ArrayList<>();
-   // ArrayList<Point> carPoints = new ArrayList<>();
 
     static Point[] points = new Point[] {new Point(0, 100), new Point(300,0), new Point(0, 200), new Point(300, 300)};
     BufferedImage[] images = new BufferedImage[4];
     // Just a single image, TODO: Generalize
-
-/*    BufferedImage saabImage;
-    BufferedImage volvoImage;
-    BufferedImage scaniaImage;
-
-    // To keep track of a single car's position
-
-    Point saabPoint = new Point(0, 100);
-    Point volvoPoint = new Point(300,0);
-    Point scaniaPoint = new Point(0, 200);*/
-
-    //BufferedImage volvoWorkshopImage;
-    //Point volvoWorkshopPoint = new Point(300,300);
-
-   /* public void addCarImage(BufferedImage...carImages){
-        for (BufferedImage carImage : carImages) {
-            this.carImages.add(carImage);
-        }
-    }
-
-    public void addCarPoint(Point...carPoints){
-        for (Point carPoint : carPoints) {
-            this.carPoints.add(carPoint);
-        }
-    }*/
-
 
 
     // TODO: Make this general for all cars
@@ -69,9 +41,7 @@ public class DrawPanel extends JPanel{
             images[1] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             images[2] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
             images[3] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
-            /*addCarPoint(volvoPoint, saabPoint, scaniaPoint);
-            addCarImage(volvoImage, saabImage, scaniaImage);*/
-            //volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -91,11 +61,6 @@ public class DrawPanel extends JPanel{
             System.out.println("Drawing car " + i + " at: " + points[i]);
             g.drawImage(images[i], points[i].x, points[i].y, null);
         }
-        /*
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);*/
-        //g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
     }
 
     public static int[] getCoords(int i) {
