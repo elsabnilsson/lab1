@@ -19,7 +19,6 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     void moveit(int i, int x, int y){
-
         points[i].x = x;
         points[i].y = y;
     }
@@ -55,10 +54,6 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < images.length; i++) {
-            g.drawImage(images[i], points[i].x, points[i].y, null);
-        }
-        for (int i = 0; i < images.length; i++) {
-            System.out.println("Drawing car " + i + " at: " + points[i]);
             g.drawImage(images[i], points[i].x, points[i].y, null);
         }
     }
