@@ -3,6 +3,7 @@ import java.awt.*;
 public abstract class Car implements Movable{
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
+    private final String modelName;
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private double xpos;
@@ -18,8 +19,11 @@ public abstract class Car implements Movable{
         this.ypos = 0;
         this.direction = 0;
         this.carLength = carLength;
+        this.modelName = modelName;
         stopEngine();
     }
+    
+    public String getModelName() { return modelName; }
 
     public double getCarLength() { return carLength; }
 

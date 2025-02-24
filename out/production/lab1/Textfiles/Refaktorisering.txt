@@ -4,6 +4,9 @@
 4. Lägg all funktionalitet i CarViewFunctions
 5. Ta bort CarView frame objektet från CarController för att inte ha ett tvåvägs beroende
 6. Kalla på CarController genom CarViewFunctions
+7. Dela upp CarController i tre klasser; CarController som kontrollerar, CarFactory som skapar bilar och RunGraphics som kör programmet
+8. CarFactory beror på Car istället för de enskilda instanserna av specifika bilar
+9. Ta bort att man behöver ange koordinater på flera ställen
 
 
-Steg 1 och steg 2-6 kan ske samtidigt av olika utvecklare
+Steg 1, steg 2-4 och steg 5-9 kan ske samtidigt av olika utvecklare

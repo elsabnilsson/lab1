@@ -16,17 +16,21 @@ public class CarController {
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+   // private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    //CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
-    Workshop<Volvo240> volvoWorkshop = new Workshop<>(10, 300, 300);
+    //ArrayList<Car> cars = new ArrayList<>();
+    //Workshop<Volvo240> volvoWorkshop = new Workshop<>(10, 300, 300);
+
+    DrawPanel drawPanel;
+
+    Timer timer = new Timer(delay, new TimerListener(this));
 
     //methods:
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
@@ -43,12 +47,12 @@ public class CarController {
 
         // Start the timer
         cc.timer.start();
-    }
+    }*/
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
-    private class TimerListener implements ActionListener {
+   /* private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < cars.size(); i++) {
                 Car car = cars.get(i);
@@ -80,61 +84,77 @@ public class CarController {
                 frame.drawPanel.repaint();
             }
         }
+    }*/
+
+    public CarController(String framename, CarViewGraphics cvg, int X, int Y) {
+        drawPanel = new DrawPanel(X, Y);
+        cvg.initComponents(framename, drawPanel);
+
+        timer.start();
+        cvg.addActionListenerToGasButton();
+        cvg.addActionListenerToBrakeButton();
+        cvg.addActionListenerToTurboOnButton();
+        cvg.addActionListenerToTurboOffButton();
+        cvg.addActionListenerToLiftBedButton();
+        cvg.addActionListenerToLowerBedButton();
+        cvg.addActionListenerToStartButton();
+        cvg.addActionListenerToStopButton();
+
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    static void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars) {
+        for (Car car : RunProgram.cars) {
             car.gas(gas);
         }
     }
 
-    void brake(int amount) {
+    static void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars) {
+        for (Car car : RunProgram.cars) {
             car.brake(brake);
         }
     }
 
-    void startCars() {
-        for (Car car : cars) {
+    static void startCars() {
+        for (Car car : RunProgram.cars) {
             car.startEngine();
         }
     }
 
-    void stopCars() {
-        for (Car car : cars) {
+    static void stopCars() {
+        for (Car car : RunProgram.cars) {
             car.stopEngine();
         }
     }
 
-    void turboOn() {
-        for (Car car : cars) {
+    static void turboOn() {
+        for (Car car : RunProgram.cars) {
             if (car instanceof Saab95) {
                 ((Saab95) car).setTurboOn();
             }
         }
     }
 
-    void turboOff() {
-        for (Car car : cars) {
+    static void turboOff() {
+        for (Car car : RunProgram.cars) {
             if (car instanceof Saab95) {
                 ((Saab95) car).setTurboOff();
             }
         }
     }
 
-    void liftBed() {
-        for (Car car : cars) {
+    static void liftBed() {
+        for (Car car : RunProgram.cars) {
             if (car instanceof Scania) {
                 ((Scania) car).raiseBed(70);
             }
         }
     }
 
-    void lowerBed() {
-        for (Car car : cars) {
+    static void lowerBed() {
+        for (Car car : RunProgram.cars) {
             if (car instanceof Scania) {
                 ((Scania) car).lowerBed(0);
             }
