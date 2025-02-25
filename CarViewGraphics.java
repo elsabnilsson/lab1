@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class CarViewGraphics extends JFrame {
     static final int X = 800;
     static final int Y = 800;
@@ -88,9 +90,12 @@ public class CarViewGraphics extends JFrame {
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        new CarViewFunctions(this).addListeners();
     }
 
-    public void addActionListenerToGasButton() {
+
+
+/*    public void addActionListenerToGasButton() {
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -160,7 +165,7 @@ public class CarViewGraphics extends JFrame {
                 CarController.stopCars();
             }
         });
-    }
+    }*/
 
 
 }

@@ -72,11 +72,10 @@ public class DrawPanel extends JPanel{
         }*/
         for (Car car : RunProgram.cars) {
 
-            //for (String key : images.keySet()) {
+
             g. drawImage(images.get(car.getModelName()), (int) Math.ceil(car.getXpos()), (int) Math.ceil(car.getYpos()), null);
 
-                //g.drawImage( car., (int) Math.ceil(car.getXpos()), (int) Math.ceil(car.getYpos()), null);
-            //}
+
         }
 
     }

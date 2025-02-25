@@ -6,65 +6,71 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-public class CarViewFunctions { // extends CarView {
-    private CarController carC;
 
-    */
-/*JPanel controlPanel = new JPanel();
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();*//*
+public class CarViewFunctions {
+    CarViewGraphics carViewGraphics;
 
-
-    public CarViewFunctions(String framename, CarController cc) {
-        //super(framename, cc);
-        this.carC = cc;
-        initComponents(framename);
+    public CarViewFunctions(CarViewGraphics carViewGraphics) {
+        this.carViewGraphics = carViewGraphics;
     }
 
-    // This actionListener is for the gas button only
-    // TODO: Create more for each component as necessary
-        gasButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.gas(gasAmount);
-        }
-    });
-        brakeButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.brake(gasAmount);
-        }
-    });
-        turboOnButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.turboOn();
-        }
-    });
-        turboOffButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.turboOff();
-        }
-    });
-        liftBedButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.liftBed();
-        }
-    });
-        lowerBedButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.lowerBed();
-        }
-    });
-        startButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.startCars();
-        }
-    });
-        stopButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) { this.carC.stopCars();
-        }
-    }
+    public void addListeners() {
+        carViewGraphics.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.gas(carViewGraphics.gasAmount);
+            }
+        });
 
+        carViewGraphics.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.brake(carViewGraphics.gasAmount);
+            }
+        });
+
+        carViewGraphics.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.turboOn();
+            }
+        });
+
+        carViewGraphics.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.turboOff();
+            }
+        });
+
+        carViewGraphics.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.liftBed();
+            }
+        });
+
+        carViewGraphics.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.lowerBed();
+            }
+        });
+
+        carViewGraphics.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.startCars();
+            }
+        });
+
+        carViewGraphics.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarController.stopCars();
+            }
+        });
+    }
 
 }
-*/
+

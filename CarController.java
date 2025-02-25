@@ -91,14 +91,15 @@ public class CarController {
         cvg.initComponents(framename, drawPanel);
 
         timer.start();
-        cvg.addActionListenerToGasButton();
+        new CarViewFunctions(cvg).addListeners();
+        /*cvg.addActionListenerToGasButton();
         cvg.addActionListenerToBrakeButton();
         cvg.addActionListenerToTurboOnButton();
         cvg.addActionListenerToTurboOffButton();
         cvg.addActionListenerToLiftBedButton();
         cvg.addActionListenerToLowerBedButton();
         cvg.addActionListenerToStartButton();
-        cvg.addActionListenerToStopButton();
+        cvg.addActionListenerToStopButton();*/
 
     }
 
