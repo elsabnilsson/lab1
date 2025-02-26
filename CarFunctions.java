@@ -1,76 +1,81 @@
 import java.awt.event.ActionEvent;
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+public class CarFunctions {
+    CarView carView;
 
-public class CarViewFunctions {
-    CarViewGraphics carViewGraphics;
-
-    public CarViewFunctions(CarViewGraphics carViewGraphics) {
-        this.carViewGraphics = carViewGraphics;
+    public CarFunctions(CarView carView) {
+        this.carView = carView;
     }
 
     public void addListeners() {
-        carViewGraphics.gasButton.addActionListener(new ActionListener() {
+        carView.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CarController.gas(carViewGraphics.gasAmount);
+                CarController.gas(carView.gasAmount);
             }
         });
 
-        carViewGraphics.brakeButton.addActionListener(new ActionListener() {
+        carView.brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CarController.brake(carViewGraphics.gasAmount);
+                CarController.brake(carView.gasAmount);
             }
         });
 
-        carViewGraphics.turboOnButton.addActionListener(new ActionListener() {
+        carView.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.turboOn();
             }
         });
 
-        carViewGraphics.turboOffButton.addActionListener(new ActionListener() {
+        carView.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.turboOff();
             }
         });
 
-        carViewGraphics.liftBedButton.addActionListener(new ActionListener() {
+        carView.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.liftBed();
             }
         });
 
-        carViewGraphics.lowerBedButton.addActionListener(new ActionListener() {
+        carView.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.lowerBed();
             }
         });
 
-        carViewGraphics.startButton.addActionListener(new ActionListener() {
+        carView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.startCars();
             }
         });
 
-        carViewGraphics.stopButton.addActionListener(new ActionListener() {
+        carView.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarController.stopCars();
             }
         });
-    }
 
+        carView.addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { CarController.addCar();
+            }
+        });
+
+       carView.removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { CarController.removeCar();
+            }
+        });
+    }
 }
 
