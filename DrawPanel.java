@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -15,7 +16,10 @@ public class DrawPanel extends JPanel{
     BufferedImage saabImage;
     BufferedImage scaniaImage;
 
+    BufferedImage workshopImage;
+
     Map<String, BufferedImage> images = new HashMap<>();
+
 
 
 
@@ -28,10 +32,12 @@ public class DrawPanel extends JPanel{
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            workshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
 
             images.put("Volvo240", volvoImage);
             images.put("Saab95", saabImage);
             images.put("Scania", scaniaImage);
+            images.put("Workshop", workshopImage);
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -41,13 +47,20 @@ public class DrawPanel extends JPanel{
 
     // This method is called each time the panel updates/refreshes/repaints itself
     // TODO: Change to suit your needs.
-    @Override
+    //@Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         for (Car car : Application.cars) {
             g. drawImage(images.get(car.getModelName()), (int) Math.ceil(car.getXpos()), (int) Math.ceil(car.getYpos()), null);
         }
 
+        g.drawImage(images.get("Workshop"), 300, 300, null);
+
+
     }
 
 }
+
+
+

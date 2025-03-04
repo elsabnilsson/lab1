@@ -27,7 +27,7 @@ public class Scania extends Car{
 
     // Lowers the bed of the Scania
     public void lowerBed(double amount) {
-            bed.lowerBed(amount);
+        bed.lowerBed(amount);
     }
 
     // Returns speed factor of Scania

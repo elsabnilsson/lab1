@@ -10,13 +10,16 @@ public class CarController{
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     DrawPanel drawPanel;
-    Timer timer = new Timer(delay, new TimerListener(this));
+    Timer timer;
+
+
+    //Workshop<Volvo240> volvoWorkshop = new Workshop<>(3, 300, 300);
 
 
     public CarController(String framename, CarView cvg, int X, int Y) {
         drawPanel = new DrawPanel(X, Y);
         cvg.initComponents(framename, drawPanel);
-
+        timer = new Timer(delay, new TimerListener(this));
         timer.start();
         new CarFunctions(cvg).addListeners();
 
@@ -59,27 +62,19 @@ public class CarController{
     static void lowerBed() {
         for (Car car : Application.cars) {
             if (car instanceof Scania) {
-                ((Scania) car).lowerBed(0); }}}
+                ((Scania) car).lowerBed(70); }}}
 
     static void addCar() {
-        System.out.println("Adding a car: " );
         int size = Application.cars.size();
         if (size < 10) {
-            enum CarType {VOLVO, SAAB, SCANIA}
-            CarType carType = CarType.values()[(int) (Math.random() * CarType.values().length)];
-            switch (carType) {
-                case SCANIA:
-                    Application.cars.add(CarFactory.createVolvo240());
-                    break;
-                case SAAB:
-                    Application.cars.add(CarFactory.createSaab95());
-                    break;
-                case VOLVO:
-                    Application.cars.add(CarFactory.createScania());
-                    break;
-            }}}
+
+            Application.cars.add(CarFactory.createRandomCar());
+
+
+        }}
 
     static void removeCar() {
         if (!Application.cars.isEmpty()) {
-            Application.cars.remove(Application.cars.size() - 1); }}
+            Application.cars.removeLast();} }
+
 }

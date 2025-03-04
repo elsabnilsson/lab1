@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 public abstract class Car implements Movable{
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
@@ -10,6 +11,7 @@ public abstract class Car implements Movable{
     private double ypos;
     private int direction;
     private final double carLength;
+    boolean isEngineOn = false;
 
     public Car(int nrDoors, Color color, double enginePower, String modelName, int xpos, int ypos, int direction, double carLength){
         this.nrDoors = nrDoors;
@@ -22,7 +24,7 @@ public abstract class Car implements Movable{
         this.modelName = modelName;
         stopEngine();
     }
-    
+
     public String getModelName() { return modelName; }
 
     public double getCarLength() { return carLength; }
@@ -42,12 +44,12 @@ public abstract class Car implements Movable{
 
     // Makes car move in the direction it is facing (task 2)
     public void move(){
-            switch (direction){
-                case 0 -> ypos += currentSpeed;
-                case 1 -> xpos += currentSpeed;
-                case 2 -> ypos -= currentSpeed;
-                case 3 -> xpos -= currentSpeed;
-            }
+        switch (direction){
+            case 0 -> ypos += currentSpeed;
+            case 1 -> xpos += currentSpeed;
+            case 2 -> ypos -= currentSpeed;
+            case 3 -> xpos -= currentSpeed;
+        }
     }
 
     // Makes car turn left (task 2)
@@ -72,10 +74,15 @@ public abstract class Car implements Movable{
 
     // Starts the engine
     public void startEngine() {
-        if (canStart()) { currentSpeed = 0.1; }}
+        if (canStart()) {
+            if (!isEngineOn) {
+                currentSpeed = 0;
+                isEngineOn = true;
+            }}}
 
     // Stops the engine
-    public void stopEngine() { currentSpeed = 0; }
+    public void stopEngine() { currentSpeed = 0;
+        isEngineOn = false; }
 
     // Abstract method - implemented in subclasses
     abstract double speedFactor();
@@ -92,14 +99,14 @@ public abstract class Car implements Movable{
     // Checks if the amount is within the bounds of 0 and 1
     public void checkAmount(double amount){
         if (amount < 0 || amount > 1){
-            throw new IllegalArgumentException("Amount out of bounds");
-        }
-    }
+            throw new IllegalArgumentException("Amount out of bounds"); }}
+
     // Makes the car go faster
     public void gas(double amount){
-        checkAmount(amount);
-        incrementSpeed(amount);
-    }
+        if (canStart()) {
+            if (isEngineOn) {
+                checkAmount(amount);
+                incrementSpeed(amount); }}}
 
     // Makes the car go slower
     public void brake(double amount){
@@ -111,4 +118,3 @@ public abstract class Car implements Movable{
 
 
 }
-

@@ -71,7 +71,7 @@ public class CarFunctions {
             }
         });
 
-       carView.removeCarButton.addActionListener(new ActionListener() {
+        carView.removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { CarController.removeCar();
             }

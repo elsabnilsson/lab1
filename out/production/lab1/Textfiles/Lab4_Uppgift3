@@ -8,10 +8,10 @@ med att man ska kunna skicka en signal vid en specifik händelse till andra obje
 behöva bero på dem.
 
 Finns det något ställe där ni kan förbättra er design genom att använda detta design pattern?
-- Man skulle eventuellt kunna använda detta pattern för att lyssna på när en bil krokar med
+- Man skulle eventuellt kunna använda detta pattern för att lyssna på när en bil krockar med
 kanten i viewn och då vända bilen. Det skulle ge en mer allmän och utökningsbar lösning än
 den vi har just nu. Dock skulle det ändå krävas en del hårdkodning och vi tror att det skulle
-bli mer komplicerat än den läsning vi har nu. Därav ser vi inte något syfte i att göra om den
+bli mer komplicerat än den lösning vi har nu. Därav ser vi inte något syfte i att göra om den
 design vi har för tillfället.
 
 

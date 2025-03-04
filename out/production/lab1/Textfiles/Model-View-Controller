@@ -1,5 +1,7 @@
-Vilka avvikelser från MVC-idealet kan ni identifiera i det ursprungliga användargränssnittet? Vad borde ha gjorts smartare, dummare eller tunnare?
-- CarController bör inte innehålla en lista av bilarna. Bilarna (modellen) bör hanteras separat av en klass som enbart hanterar bilarnas logik och tillstånd.
+Vilka avvikelser från MVC-idealet kan ni identifiera i det ursprungliga
+användargränssnittet? Vad borde ha gjorts smartare, dummare eller tunnare?
+- CarController bör inte innehålla en lista av bilarna. Bilarna (modellen)
+  bör hanteras separat av en klass som enbart hanterar bilarnas logik och tillstånd.
 - CarController innehåller även applikationen (main metoden).
 - CarController måste bli tunnare, dvs göra mindre saker.
 - CarView ska vara dum men är inte det i nuläget. Den utför beräkningar och tar input.
