@@ -3,16 +3,18 @@ import java.awt.event.ActionListener;
 
 public class TimerListener implements ActionListener {
 
-    CarController carController;
+    CarModel carModel;
+    private final DrawPanel drawPanel;
     Workshop<Volvo240> volvoWorkshop = new Workshop<>(3, 300, 300);
 
 
-    public TimerListener(CarController carController) {
-        this.carController = carController;
+    public TimerListener(CarModel carModel, DrawPanel drawPanel) {
+        this.carModel = carModel;
+        this.drawPanel = drawPanel;
     }
 
     public void actionPerformed(ActionEvent e) {
-        for (Car car : Application.cars) {
+        for (Car car : carModel.getCars()) {
 
             car.move();
 
@@ -35,8 +37,7 @@ public class TimerListener implements ActionListener {
             }
 
 
-            Application.carController.drawPanel.repaint();
+            drawPanel.repaint();
         }
     }
 }
-

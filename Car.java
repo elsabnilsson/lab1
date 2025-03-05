@@ -17,8 +17,8 @@ public abstract class Car implements Movable{
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
-        this.xpos = 0;
-        this.ypos = 0;
+        this.xpos = xpos;
+        this.ypos = ypos;
         this.direction = 0;
         this.carLength = carLength;
         this.modelName = modelName;
@@ -78,7 +78,8 @@ public abstract class Car implements Movable{
             if (!isEngineOn) {
                 currentSpeed = 0;
                 isEngineOn = true;
-            }}}
+            }
+        }}
 
     // Stops the engine
     public void stopEngine() { currentSpeed = 0;
@@ -103,10 +104,9 @@ public abstract class Car implements Movable{
 
     // Makes the car go faster
     public void gas(double amount){
-        if (canStart()) {
             if (isEngineOn) {
                 checkAmount(amount);
-                incrementSpeed(amount); }}}
+                incrementSpeed(amount); }}
 
     // Makes the car go slower
     public void brake(double amount){

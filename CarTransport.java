@@ -7,8 +7,8 @@ public class CarTransport extends Scania implements Loading<Car> {
     private final double loadingDistance = 5.0;
     private final TruckBed ramp;
 
-    public CarTransport(int maxCars){
-        super();
+    public CarTransport(int maxCars, int x, int y){
+        super(x,y);
         this.maxCars = maxCars;
         this.loadedCars = new Stack<>();
         this.ramp = new TruckBed(); }

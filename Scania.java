@@ -3,8 +3,8 @@ import java.awt.*;
 public class Scania extends Car{
     private final TruckBed bed;
 
-    public Scania() {
-        super(2, Color.blue, 800, "Scania", 0, 0, 0, 12);
+    public Scania(int x, int y) {
+        super(2, Color.blue, 800, "Scania", x, y, 0, 12);
         this.bed = new TruckBed();
     }
 
